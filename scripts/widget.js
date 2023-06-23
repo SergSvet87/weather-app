@@ -1,11 +1,14 @@
-import { startWidget } from './modules/widgetService.js';
+import { cityServiceSearch } from "./modules/cityServiceSearch.js";
+import { startWidget } from "./modules/widgetService.js";
 
 const init = () => {
   const app = document.getElementById("app");
 
-  const widget = startWidget();
+  startWidget().then((widget) => {
+    app.append(widget);
 
-  app.append(widget);
+    cityServiceSearch(widget);
+  });
 };
 
 init();
